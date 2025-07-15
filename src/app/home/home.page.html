@@ -1,20 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<a class="navbar navbar-dark bg-primary" variant="dark" href="/">
+  <a class="navbar-brand"> Microsoft Identity Platform </a>
+  <a>
+    @if (loginDisplay) {
+    <button class="btn btn-secondary" (click)="logout()">Sign Out</button>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    } @else {
+    <button class="btn btn-secondary" (click)="login()">Sign In</button>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    }
+  </a>
+</a>
+<a class="profileButton">
+  @if (loginDisplay) {
+  <a [routerLink]="['/profile']" class="btn btn-secondary">View Profile</a>
+
+  }
+</a>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
