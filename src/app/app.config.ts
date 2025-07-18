@@ -11,9 +11,8 @@ import {
 } from '@azure/msal-angular';
 import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { msalConfig } from 'src/msal-config';
-import { IonicRouteStrategy } from '@ionic/angular';
+import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalone';
 import { PreloadAllModules, provideRouter, RouteReuseStrategy, withPreloading } from '@angular/router';
-import { provideIonicAngular } from '@ionic/angular/standalone';
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { routes } from './app.routes';
 
