@@ -1,4 +1,4 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { EventMessage, EventType, InteractionStatus, RedirectRequest } from '@azure/msal-browser';
 import { MSAL_GUARD_CONFIG, MsalBroadcastService, MsalGuardConfiguration, MsalService } from '@azure/msal-angular';
 import { filter, Subject, takeUntil } from 'rxjs';
@@ -8,7 +8,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [RouterLink, RouterOutlet]
+  imports: [RouterLink, RouterOutlet],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePage implements OnInit, OnDestroy {
   title = 'Angular - MSAL Example';
@@ -49,7 +50,7 @@ export class HomePage implements OnInit, OnDestroy {
   // If the user is logged in, present the user with a "logged in" experience
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
-    console.log(this.authService.instance.getAllAccounts());
+    console.log(this.authService.instance.getAllAccounts()?.[0].idToken);
   }
 
   // Log the user in and redirect them if MSAL provides a redirect URI otherwise go to the default URI

@@ -1,15 +1,16 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
 import { filter, from } from 'rxjs';
 import { EventMessage, EventType } from '@azure/msal-browser';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-profile-page',
-  templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.scss']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProfilePageComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   private authService = inject(MsalService);
   private msalBroadcastService: MsalBroadcastService = inject(MsalBroadcastService);
   private broadcastService: MsalBroadcastService = inject(MsalBroadcastService);
